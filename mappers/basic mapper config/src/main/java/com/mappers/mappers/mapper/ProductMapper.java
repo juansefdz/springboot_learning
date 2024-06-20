@@ -16,7 +16,7 @@ public interface ProductMapper {
                     target = "creationDate",
                     dateFormat = "yyyy-MM-dd HH-mm-ss") // Especifica el formato de fecha para el campo 'creationDate' en el objeto destino.
     })
-    GetProduct toGetDTO (Product product); // Método que convierte un objeto 'Product' en un objeto 'GetProduct'.
+    GetProduct toGetDTO(Product product); // Método que convierte un objeto 'Product' en un objeto 'GetProduct'.
 
     @InheritInverseConfiguration // Indica que este método debe invertir el mapeo definido en 'toGetDTO'.
     Product toEntity(GetProduct getProduct); // Método que convierte un objeto 'GetProduct' en un objeto 'Product'.
