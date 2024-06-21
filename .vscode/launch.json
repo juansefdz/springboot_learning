@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "MappersApplication",
+      "request": "launch",
+      "mainClass": "com.mappers.mappers.MappersApplication",
+      "projectName": "mappers-lombok"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-MappersApplication<mappers>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.mappers.mappers.MappersApplication",
+      "projectName": "mappers",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import com.mappers.mappers.entities.Product;
 import org.mapstruct.*;
 
 import java.util.List;
-@Mapper (componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper (componentModel = MappingConstants.ComponentModel.SPRING, uses = {CategoryMapper.class})
 public interface ProductMapper {
 
     @Mappings({
@@ -14,7 +14,7 @@ public interface ProductMapper {
             @Mapping(source = "name",target = "name"),
             @Mapping(source = "creationDate",
                     target = "creationDate",
-                    dateFormat = "yyyy-MM-dd HH:mm:ss ")
+                    dateFormat = "yyyy-MM-dd HH:mm:ss ") 
     })
     GetProduct toGetDTO(Product product);
 
