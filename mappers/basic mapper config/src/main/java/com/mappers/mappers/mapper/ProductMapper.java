@@ -5,22 +5,25 @@ import com.mappers.mappers.entities.Product;
 import org.mapstruct.*;
 
 import java.util.List;
-@Mapper (componentModel = MappingConstants.ComponentModel.SPRING) // Define que esta interfaz es un Mapper de MapStruct y especifica que se integrará con el contenedor de Spring.
+@Mapper (componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
 
-    @Mappings({ // Define un grupo de mapeos entre propiedades de objetos.
-            //al llamarse igual los Mapping las id del source y el target se pueden eliminar
+    @Mappings({
+            //al tener los identificadores iguales se pueden eliminar los mapping. no es necesario hacer el mapeo.
             @Mapping(source = "id",target = "id"),
             @Mapping(source = "name",target = "name"),
             @Mapping(source = "creationDate",
                     target = "creationDate",
-                    dateFormat = "yyyy-MM-dd HH-mm-ss") // Especifica el formato de fecha para el campo 'creationDate' en el objeto destino.
+                    dateFormat = "yyyy-MM-dd HH:mm:ss ")
     })
-    GetProduct toGetDTO(Product product); // Método que convierte un objeto 'Product' en un objeto 'GetProduct'.
+    GetProduct toGetDTO(Product product);
 
-    @InheritInverseConfiguration // Indica que este método debe invertir el mapeo definido en 'toGetDTO'.
-    Product toEntity(GetProduct getProduct); // Método que convierte un objeto 'GetProduct' en un objeto 'Product'.
+    // Método para convertir GetProduct (DTO) a Product (entidad)
+    @InheritInverseConfiguration // Hereda la configuración inversa del método toGetDTO
+    Product toEntity(GetProduct getProduct);
 
-    List<GetProduct> toGetProductList (List<Product> productList); // Método que convierte una lista de 'Product' en una lista de 'GetProduct'.
-    List<Product> toEntityList(List<GetProduct> getProductList); // Método que convierte una lista de 'GetProduct' en una lista de 'Product'.
+    // Método para convertir lista de Product a lista de GetProduct
+    List<GetProduct> toGetProductList (List<Product> productList);
+    // Método para convertir lista de GetProduct a lista de Product
+    List<Product> toEntityList(List<GetProduct> getProductList);
 }
